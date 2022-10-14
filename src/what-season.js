@@ -11,69 +11,36 @@ const { NotImplementedError } = require("../extensions/index.js");
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  *
  */
+
 function getSeason(date) {
-  throw new NotImplementedError("Not implemented");
-  // remove line with error and write your code here
-  // console.log(typeof date);
-  // console.log(date instanceof Date);
-  // console.log(date.getMonth());
-  // if (date === undefined) {
-  //   return "Unable to determine the time of year!";
-  // } else if (date instanceof Date) {
-  //   if (
-  //     date.getMonth() === 1 ||
-  //     date.getMonth() === 11 ||
-  //     date.getMonth() === 0
-  //   ) {
-  //     return "winter";
-  //   } else if (date.getMonth() <= 4 && date.getMonth() >= 2) {
-  //     return "spring";
-  //   } else if (date.getMonth() <= 7 && date.getMonth() >= 5) {
-  //     return "summer";
-  //   } else if (date.getMonth() <= 10 && date.getMonth() >= 8) {
-  //     return "autumn";
-  //   }
-  // } else {
-  //   return "Invalid date!";
-  // }
-
-  if (date === undefined) {
-    return "Unable to determine the time of year!";
-  } else if (typeof date.getMonth() === "number") {
-    if (
-      date.getMonth() === 1 ||
-      date.getMonth() === 11 ||
-      date.getMonth() === 0
+  console.log(Object.prototype.toString.call(date));
+  try {
+    if (date === undefined) {
+      return "Unable to determine the time of year!";
+    } else if (
+      (date instanceof Date === false ||
+        Object.getOwnPropertyNames(date).length > 0) &&
+      arguments.length > 0
     ) {
-      return "winter";
-    } else if (date.getMonth() <= 4 && date.getMonth() >= 2) {
-      return "spring";
-    } else if (date.getMonth() <= 7 && date.getMonth() >= 5) {
-      return "summer";
-    } else if (date.getMonth() <= 10 && date.getMonth() >= 8) {
-      return "autumn";
+      throw new Error("Invalid date!");
+    } else if (typeof date.getMonth() === "number") {
+      if (
+        date.getMonth() === 1 ||
+        date.getMonth() === 11 ||
+        date.getMonth() === 0
+      ) {
+        return "winter";
+      } else if (date.getMonth() <= 4 && date.getMonth() >= 2) {
+        return "spring";
+      } else if (date.getMonth() <= 7 && date.getMonth() >= 5) {
+        return "summer";
+      } else if (date.getMonth() <= 10 && date.getMonth() >= 8) {
+        return "autumn";
+      }
     }
-  } else {
-    return "Invalid date!";
+  } catch (err) {
+    throw new Error("Invalid date!");
   }
-
-  // if (date === undefined) {
-  //   return "Unable to determine the time of year!";
-  // } else if (
-  //   date.getMonth() === 1 ||
-  //   date.getMonth() === 11 ||
-  //   date.getMonth() === 0
-  // ) {
-  //   return "winter";
-  // } else if (date.getMonth() <= 4 && date.getMonth() >= 2) {
-  //   return "spring";
-  // } else if (date.getMonth() <= 7 && date.getMonth() >= 5) {
-  //   return "summer";
-  // } else if (date.getMonth() <= 10 && date.getMonth() >= 8) {
-  //   return "autumn";
-  // } else {
-  //   return "Invalid date!";
-  // }
 }
 
 module.exports = {
