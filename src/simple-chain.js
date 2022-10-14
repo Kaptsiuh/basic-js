@@ -15,7 +15,7 @@ const chainMaker = {
   addLink(value) {
     throw new NotImplementedError("Not implemented");
     // remove line with error and write your code here
-    chainMaker.chainArray.push(value);
+    // chainMaker.chainArray.push(value);
   },
   removeLink(position) {
     throw new NotImplementedError("Not implemented");
